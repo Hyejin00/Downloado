@@ -2,6 +2,7 @@ import produce from 'immer';
 
 const initalState = {
   loading: false,
+  videolist: null,
 }
 
 const reducer = produce((state, action)=>{
@@ -12,6 +13,9 @@ const reducer = produce((state, action)=>{
     case 'END_LOADING':
       state.loading = false;
       break;
+    case 'FETCH_VIDEOLIST':
+      state.videolist = action.payload;
+      state.loading = false;
     default:
       break;
   }

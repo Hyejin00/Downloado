@@ -1,19 +1,25 @@
-const tintColorLight = '#E74C3C';
-const tintColorDark = '#E74C3C';
-
-export default {
-  light: {
-    text: '#000',
-    background: '#fff',
-    tint: tintColorLight,
-    tabIconDefault: '#ccc',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#fff',
-    background: '#000',
-    tint: tintColorDark,
-    tabIconDefault: '#ccc',
-    tabIconSelected: tintColorDark,
-  },
+export default ThemeColor = (isDark) => {
+  return {
+    light: {
+      text: '#212121',
+      background: '#F5F5F5',
+      detailedText: '#ccc'
+    },
+    dark: {
+      text: '#E0E0E0',
+      background: '#212121',
+      detailedText: '#d6d6d6'
+    },
+    navigationTheme:{
+      dark: isDark,
+      colors: {
+        primary: isDark?'#E0E0E0':'#E74C3C',
+        background: isDark?'#212121':'#F5F5F5',
+        card: isDark?'#212121':'#F5F5F5',
+        text: isDark?'#E0E0E0':'#212121',
+        border: '#424242',
+        notification: '#E74C3C',
+      },
+    }
+  }
 };
