@@ -11,7 +11,6 @@ export default function HomeScreen(){
   const dispatch = useDispatch();
   const loading = useSelector(state => state.loading);
   const videolist = useSelector(state => state.videolist);
-  console.log(videolist);
   const Container = styled.SafeAreaView`
     flex:1;
   `;
@@ -47,7 +46,7 @@ export default function HomeScreen(){
   // ];
 
   useEffect(()=>{
-    dispatch(fetchVideoList());
+    //dispatch(fetchVideoList());
   },[])
 
   return (

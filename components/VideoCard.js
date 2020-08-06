@@ -38,7 +38,7 @@ export default function VideoCard({ thumnails, title, channelTitle, publishedAt}
     <CardView>
       <ThumbnailImg source = {{uri:thumnails}}/>
       <InfoView>
-        <TitleText lineBreakMode = 'tail'>{title}</TitleText>
+        <TitleText ellipsizeMode = 'tail' numberOfLines={2}>{title}</TitleText>
         <Feather name="download" size={40} color="black" />
       </InfoView>
       <DetailText>{channelTitle} · {publishedAt}</DetailText>
