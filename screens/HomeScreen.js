@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components/native';
-import { FlatList,Text } from 'react-native';
+import { FlatList, Text, SafeAreaView } from 'react-native';
 import { fetchVideoList } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,9 +10,6 @@ export default function HomeScreen(){
   const dispatch = useDispatch();
   const loading = useSelector(state => state.loading);
   const videolist = useSelector(state => state.videolist);
-  const Container = styled.SafeAreaView`
-    flex:1;
-  `;
   
   // const DATA = [
   //   {
@@ -50,7 +46,7 @@ export default function HomeScreen(){
   },[])
 
   return (
-    loading?<Text>loading</Text>:<Container>
+    loading?<Text>loading</Text>:<SafeAreaView>
       <FlatList
         data = {videolist}
         renderItem={({ item }) => (
@@ -63,6 +59,6 @@ export default function HomeScreen(){
         )}
         keyExtractor={item => item.id}
       />
-    </Container>
+    </SafeAreaView>
   );
 }

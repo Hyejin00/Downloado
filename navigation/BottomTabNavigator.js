@@ -5,6 +5,7 @@ import React from 'react';
 
 import HomeScreen from '../screens/HomeScreen';
 import SettingScreen from '../screens/SettingScreen';
+import BookmarkScreen from '../screens/BookmarkScreen';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -23,14 +24,14 @@ export default function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="bookmark"
-        component={HomeNavigator}
+        component={BookmarkScreen}
         options={{
           tabBarIcon: ({color}) => <TabBarIcon name="md-heart" color={color} size={25}/>,
         }}
       />
       <BottomTab.Screen
         name="Setting"
-        component={SettingNavigator}
+        component={SettingScreen}
         options={{
           tabBarIcon: ({color}) => <TabBarIcon name="md-settings" color={color} size={27}/>,
         }}
@@ -54,19 +55,5 @@ function HomeNavigator() {
         options={{ headerTitle: 'Home' }}
       />
     </HomeStack.Navigator>
-  );
-}
-
-const SettingStack = createStackNavigator();
-
-function SettingNavigator() {
-  return (
-    <SettingStack.Navigator>
-      <SettingStack.Screen
-        name="SettingScreen"
-        component={SettingScreen}
-        options={{ headerTitle: 'Setting' }}
-      />
-    </SettingStack.Navigator>
   );
 }

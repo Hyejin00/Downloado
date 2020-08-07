@@ -2,12 +2,12 @@ export const ThemeColor = {
   light: {
     text: '#212121',
     background: '#F5F5F5',
-    detailedText: '#ccc'
+    detailedText: '#596275'
   },
   dark: {
     text: '#E0E0E0',
     background: '#212121',
-    detailedText: '#d6d6d6'
+    detailedText: '#bdc3c7'
   },
 };
 
@@ -16,7 +16,7 @@ export const NavigationColor = (isDark) => {
     navigationTheme:{
       dark: isDark,
       colors: {
-        primary: isDark?'#E0E0E0':'#E74C3C',
+        primary: isDark?'#e74c3c':'#E74C3C',
         background: isDark?'#212121':'#F5F5F5',
         card: isDark?'#212121':'#F5F5F5',
         text: isDark?'#E0E0E0':'#212121',
