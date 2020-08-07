@@ -3,7 +3,7 @@ import produce from 'immer';
 const initalState = {
   loading: false,
   videolist: null,
-  theme:'light'
+  theme:'light',
 }
 
 const reducer = produce((state, action)=>{
@@ -19,7 +19,8 @@ const reducer = produce((state, action)=>{
       state.loading = false;
       break;
     case 'TOGGLE_DAY_NIGHT':
-      state.theme = theme === 'light'?'night':'light';
+      state.theme = state.theme === 'light'?'dark':'light';
+      state.loading = false;
       break;
     default:
       break;

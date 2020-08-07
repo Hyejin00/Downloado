@@ -7,7 +7,11 @@ export default function SettingCard({ settingName }){
 
   const dispatch = useDispatch();
   const theme = useSelector(state => state.theme);
-  const toggleSwitch = () => dispatch({type:'TOGGLE_DAY_NIGHT'});
+  const isDark = theme === 'dark';
+  const toggleSwitch = () => {
+    dispatch({type:'START_LOADING'});
+    dispatch({type:'TOGGLE_DAY_NIGHT'});
+  };
 
   const Container = styled.View`
     display:flex;
@@ -29,14 +33,14 @@ export default function SettingCard({ settingName }){
   `;
   return (
     <Container>
-      <Ionicons name={theme === 'light'?"ios-moon":"ios-sunny"} size={26} color={theme === 'light'?"white":"black"} />
+      <Ionicons name={isDark?"ios-moon":"ios-sunny"} size={26} color={isDark?"white":"black"} />
       <MenuName>{settingName}</MenuName>
       <DayNightSwitch
-        trackColor={{ 'light': "#7f8c8d", 'dark': "#2c3e50" }}
-        thumbColor={theme === 'light'? "#3498db" : "#f4f3f4"}
+        trackColor={{ true: "#7f8c8d", false: "#2c3e50" }}
+        thumbColor={isDark? "#3498db" : "#f4f3f4"}
         ios_backgroundColor="#3e3e3e"
         onValueChange={toggleSwitch}
-        value={theme}
+        value={isDark}
       />
     </Container>
   );
