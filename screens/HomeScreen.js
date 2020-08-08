@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { FlatList, Text, SafeAreaView } from 'react-native';
 import { fetchVideoList } from '../actions';
+import ytdl from "react-native-ytdl";
 import { useDispatch, useSelector } from 'react-redux';
 
 import VideoCard from '../components/VideoCard';
@@ -10,6 +11,12 @@ export default function HomeScreen(){
   const dispatch = useDispatch();
   const loading = useSelector(state => state.loading);
   const videolist = useSelector(state => state.videolist);
+  // const text = async() =>{
+  //   const youtubeURL = 'https://www.youtube.com/watch?v=3b0tY6DRqgU&t=1897s';
+  //   const urls = await ytdl(youtubeURL, { quality: 'highestaudio' });
+  //   console.log(urls);
+  // }
+  // text();
   
   // const DATA = [
   //   {

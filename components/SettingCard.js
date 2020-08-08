@@ -21,7 +21,7 @@ export default function SettingCard({ settingName }){
     padding-left: 26px;
     background-color: ${props => props.theme.background};
   `;
-  // ${props =>props.theme.background}
+
   const MenuName = styled.Text`
     margin-left:10px;
     color: ${props =>props.theme.text};
