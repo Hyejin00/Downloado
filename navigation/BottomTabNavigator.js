@@ -5,7 +5,7 @@ import React from 'react';
 import { Image } from 'react-native';
 import styled from 'styled-components/native';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { useTheme } from '@react-navigation/native';
+
 
 import HomeScreen from '../screens/HomeScreen';
 import SettingScreen from '../screens/SettingScreen';
@@ -61,11 +61,9 @@ function getHeaderRight(route, navigation, colors){
 
 export default function BottomTabNavigator({ navigation, route }) {
 
-  const { colors } = useTheme();
-
   navigation.setOptions({ 
     headerTitle: getHeaderTitle(route, navigation),
-    headerRight: getHeaderRight(route, navigation, colors)
+    headerRight: getHeaderRight(route, navigation)
   });
 
   return (
