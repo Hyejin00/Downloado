@@ -2,47 +2,53 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { Image } from 'react-native';
-import styled from 'styled-components/native';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-
+import { Image } from 'react-native';
+import styled from 'styled-components';
+import { useTheme } from '@react-navigation/native';
 
 import HomeScreen from '../screens/HomeScreen';
 import SettingScreen from '../screens/SettingScreen';
 import BookmarkScreen from '../screens/BookmarkScreen';
+import SearchBar from '../components/SearchBar';
 
 const BottomTab = createBottomTabNavigator();
 
-function LogoTitle() {
-  const LogoView = styled.View`
+function getHeaderTitle(route,navigation, colors) {
+  
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+
+  const View = styled.View`
+    flex: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
   `;
 
-  const LogoText = styled.Text`
-   font-size: 20px;
-   font-weight: bold;
-   margin-left: 10px;
-   color: ${props => props.theme.text};
+  const SearchView = styled.View`
+    display:flex;
+    flex-direction: row;
+    background-color: ${props => props.theme.searchbar};
+    width: 270px;
+    padding:3px;
+    margin: 10px;
   `;
-  return (
-    <LogoView>
-      <Image
-        style={{ width: 35, height: 35 }}
-        source={require('../assets/icon.png')}
-      />
-      <LogoText>Downloado</LogoText>
-    </LogoView>
-  );
-}
-
-function getHeaderTitle(route,navigation) {
-  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
 
   switch (routeName) {
     case 'Home':
-      return () => <LogoTitle />;
+      return () =>(
+        <View>
+          <Image
+            style={{ width: 40, height: 40 }}
+            source={require('../assets/icon.png')}
+          />
+          <SearchView>
+            <Ionicons name='ios-search' size = {22} style={{margin:6}} color = {colors.text}/>
+            <SearchBar />
+          </SearchView>
+        </View>
+      );
     case 'Bookmark':
       return 'Bookmark';
     case 'Setting':
@@ -50,20 +56,12 @@ function getHeaderTitle(route,navigation) {
   }
 }
 
-function getHeaderRight(route, navigation, colors){
-  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
-
-  switch (routeName) {
-    case 'Home':
-      return () => <Ionicons name="ios-search" size={24} color={colors.text} style={{marginRight: 23}}/>;
-  }
-}
-
 export default function BottomTabNavigator({ navigation, route }) {
 
+  const { colors } = useTheme();
+
   navigation.setOptions({ 
-    headerTitle: getHeaderTitle(route, navigation),
-    headerRight: getHeaderRight(route, navigation)
+    headerTitle: getHeaderTitle(route, navigation, colors),
   });
 
   return (

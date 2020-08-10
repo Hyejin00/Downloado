@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/native';
-import { Feather } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons'; 
+import { FontAwesome } from '@expo/vector-icons';
+import DownLoadModal from './DownLoadModal';
+import ytdl from "react-native-ytdl";
 
-export default function VideoCard({ thumnails, title, channelTitle, publishedAt}){
+export default function VideoCard({ thumnails, title, channelTitle, publishedAt, videoLink}){
+  //const text = async() =>{
+  //  const youtubeURL = 'https://www.youtube.com/watch?v=3b0tY6DRqgU&t=1897s';
+  //  const urls = await ytdl(youtubeURL, { quality: 'highestaudio' });
+  //  console.log(urls);
+  //  }
+  //text();
+
   const CardView = styled.View`
     width: 100%;
     height: 290px;
@@ -19,29 +29,58 @@ export default function VideoCard({ thumnails, title, channelTitle, publishedAt}
     margin: 0 10px;
     font-weight: bold;
     font-size: 16px;
-    width: 92%
-    padding: 0
+    padding: 0;
   `;
 
   const InfoView = styled.View`
     display:flex;
-    flex-direction: row;
-    padding: 10px 10px 0px 10px;
-    width: 88%;
+    padding: 5px;
+    width: 76%;
   `;
 
   const DetailText = styled.Text`
     color:${props => props.theme.detailedText};
     margin: 0 20px;
   `;
+
+  const TextView = styled.View`
+    display:flex;
+    flex:1;
+    flex-direction: row;
+  `;
+
+  const IconView = styled.View`
+    display:flex;
+    flex:1;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px;
+  `;
+
+  const IconBtn = styled.TouchableOpacity`
+    padding: 5px;
+  `;
+
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <CardView>
+      <DownLoadModal link = {videoLink} title={title} modalVisible={modalVisible} setModalVisible= {setModalVisible}/>
       <ThumbnailImg source = {{uri:thumnails}}/>
-      <InfoView>
-        <TitleText ellipsizeMode = 'tail' numberOfLines={2}>{title}</TitleText>
-        <Feather name="download" size={40} color="black" />
-      </InfoView>
-      <DetailText>{channelTitle} · {publishedAt}</DetailText>
+      <TextView>
+        <InfoView>
+          <TitleText ellipsizeMode = 'tail' numberOfLines={2}>{title}</TitleText>
+          <DetailText>{channelTitle} · {publishedAt}</DetailText>
+        </InfoView>
+        <IconView>
+          <FontAwesome name="bookmark-o" size={30} color="black"style={{marginRight:5}}/>
+          <IconBtn
+            onPress={()=>{setModalVisible(true)}}
+          >
+            <AntDesign name="download" size={30} color="black"/>
+          </IconBtn>
+        </IconView>
+      </TextView>
     </CardView>
   );
 }
