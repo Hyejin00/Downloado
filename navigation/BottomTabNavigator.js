@@ -67,6 +67,9 @@ export default function BottomTabNavigator({ navigation, route }) {
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
+      tabBarOptions={{
+        keyboardHidesTabBar:true
+      }}
     >
       <BottomTab.Screen
         name="Home"
