@@ -2,7 +2,7 @@ import produce from 'immer';
 
 const initalState = {
   loading: false,
-  videolist: null,
+  videolist: [],
   theme:'light',
 }
 
@@ -15,7 +15,7 @@ const reducer = produce((state, action)=>{
       state.loading = false;
       break;
     case 'FETCH_VIDEOLIST':
-      state.videolist = action.payload;
+      state.videolist = state.videolist.concat(action.payload)
       state.loading = false;
       break;
     case 'TOGGLE_DAY_NIGHT':

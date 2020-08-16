@@ -10,8 +10,8 @@ export function fetchVideoList(){
       maxResults : 3,
       key: API_KEY
     };
-    search('명지대', opts, (err, videolist)=>{
-      console.log('여긴ㅋ',videolist);
+    search('', opts, (err, videolist)=>{
+      console.log('받아온 데이터 list ===>', videolist);
       dispatch({type:'FETCH_VIDEOLIST', payload: videolist});
     });
   }

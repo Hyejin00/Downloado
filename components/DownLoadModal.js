@@ -21,7 +21,7 @@ export default function DownLoadModal({ modalVisible, setModalVisible, title , l
     width: 100%;
     height: 45%;
     padding: 10px;
-    background-color: #fff;
+    background-color: ${props => props.theme.modalBackground};
     ${Platform.select({
       ios: css`shadow-color: #000;
       shadow-offset: {width: 0, height: -1};
@@ -35,6 +35,7 @@ export default function DownLoadModal({ modalVisible, setModalVisible, title , l
     font-weight: bold;
     font-size: 18px;
     margin: 0 8px;
+    color: ${props => props.theme.text};
   `;
   
   const TitleView = styled.View`
@@ -65,7 +66,7 @@ export default function DownLoadModal({ modalVisible, setModalVisible, title , l
       <Container>
         <ModalView>
           <TitleView>
-            <AntDesign name="download" size={30} color="black" style={{marginLeft:30}}/>
+            <AntDesign name="download" size={30} color={colors.text} style={{marginLeft:30}}/>
             <TitleText ellipsizeMode = 'tail' numberOfLines={2}>{title}</TitleText>
           </TitleView>
           <ContentView>

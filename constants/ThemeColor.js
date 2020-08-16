@@ -3,13 +3,15 @@ export const ThemeColor = {
     text: '#212121',
     background: '#F5F5F5',
     detailedText: '#596275',
-    searchbar: '#e1e1e1'
+    searchbar: '#e1e1e1',
+    modalBackground : "#fff"
   },
   dark: {
     text: '#E0E0E0',
     background: '#212121',
-    detailedText: '#636e72',
-    searchbar: '#4f4f4f'
+    detailedText: '#adadad',
+    searchbar: '#4f4f4f',
+    modalBackground : "#303030"
   },
 };
 

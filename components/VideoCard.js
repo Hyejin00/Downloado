@@ -4,6 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import DownLoadModal from './DownLoadModal';
 import ytdl from "react-native-ytdl";
+import { useTheme } from '@react-navigation/native';
 
 export default function VideoCard({ thumnails, title, channelTitle, publishedAt, videoLink}){
   //const text = async() =>{
@@ -62,6 +63,7 @@ export default function VideoCard({ thumnails, title, channelTitle, publishedAt,
   `;
 
   const [modalVisible, setModalVisible] = useState(false);
+  const { colors } = useTheme();
 
   return (
     <CardView>
@@ -73,11 +75,11 @@ export default function VideoCard({ thumnails, title, channelTitle, publishedAt,
           <DetailText>{channelTitle} · {publishedAt}</DetailText>
         </InfoView>
         <IconView>
-          <FontAwesome name="bookmark-o" size={30} color="black"style={{marginRight:5}}/>
+          <FontAwesome name="bookmark-o" size={30} color={colors.text} style={{marginRight:5}}/>
           <IconBtn
             onPress={()=>{setModalVisible(true)}}
           >
-            <AntDesign name="download" size={30} color="black"/>
+            <AntDesign name="download" size={30} color={colors.text}/>
           </IconBtn>
         </IconView>
       </TextView>
